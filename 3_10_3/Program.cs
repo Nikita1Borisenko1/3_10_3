@@ -7,22 +7,39 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
 
-namespace example_3_10_3 ///не понял математически как прописать задание
+namespace example_3_10_3
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Write("Введите number ");
-            int N = int.Parse(ReadLine());
-            bool determinate = true;
-            while (1 >= N - 1)
-            {
-                if (N % 2 == 0) N = +1;
-                else determinate = false;
+            bool isComposite = false;
 
+            WriteLine("Введите число для проверки на простоту:");
+            string userInput = (ReadLine());
+            int numberToTest = Convert.ToInt32(userInput);
+            int divisor = 2;
+
+            while (divisor <= numberToTest - 1)
+            {
+                int divider = numberToTest % divisor;
+
+                if (divider == 0)
+                {
+                    isComposite = true;
+                    break;
+                }
+
+                divisor++;
             }
-            ReadKey();
+            if (isComposite)
+            {
+                WriteLine("Число составное");
+            }
+            else
+            {
+                WriteLine("Число простое");
+            }
         }
     }
 }
